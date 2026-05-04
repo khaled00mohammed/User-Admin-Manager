@@ -69,27 +69,36 @@ export default {
       currentView: 'form',
     }
   },
-  methods: {
-    submitForm() {
-      if (!this.form.name || !this.form.age) {
-        alert('Please fill in both name and age before submitting.')
-        return
-      }
+ 
+    methods: {
+  submitForm() {
+    if (!this.form.name || !this.form.age) {
+      alert('Please fill in both name and age before submitting.')
+      return
+    }
 
-      const newPerson = {
-        name: this.form.name,
-        age: this.form.age,
-      }
+    const newPerson = {
+      name: this.form.name,
+      age: this.form.age,
+    }
 
-      if (this.form.role === 'admin') {
-        this.admins.push(newPerson)
-        this.currentView = 'admins'
-      } else {
-        this.users.push(newPerson)
-        this.currentView = 'users'
-      }   
-    },
+    if (this.form.role === 'admin') {
+      this.admins.push(newPerson)
+      this.currentView = 'admins'
+    } else {
+      this.users.push(newPerson)
+      this.currentView = 'users'
+    }
   },
+
+  deleteUser(index) {
+    this.users.splice(index, 1)
+  },
+
+  deleteAdmin(index) {
+    this.admins.splice(index, 1)
+  }
+}
 }
 </script>
 
